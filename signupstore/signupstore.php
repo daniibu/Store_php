@@ -67,11 +67,11 @@
     </style>
 </head>
 
-
 <body>
     <div class="container">
         <form action="signupstore2.php" method="POST">
             <h1>Registro</h1>
+            <input type="hidden" name="registration_source" value="user">
             <div class="form-group">
                 <label for="nombre_usuario">Nombre de usuario:</label>
                 <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" required>

@@ -14,7 +14,6 @@
             height: 100vh;
             background-color: #f2f2f2;
         }
-
         form {
             display: flex;
             flex-direction: column;
@@ -27,31 +26,26 @@
             padding: 30px;
             box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
         }
-
         h1 {
             text-align: center;
             margin-bottom: 30px;
         }
-
         .form-group {
             display: flex;
             flex-direction: column;
             width: 100%;
             margin-bottom: 15px;
         }
-
         label {
             font-weight: bold;
             margin-bottom: 5px;
         }
-
         input {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 3px;
             width: 100%;
         }
-
         button[type="submit"] {
             background-color: #4CAF50;
             color: #fff;
@@ -61,7 +55,6 @@
             margin-top: 20px;
             cursor: pointer;
         }
-
         button[type="submit"]:hover {
             background-color: #3e8e41;
         }
@@ -70,7 +63,6 @@
 <body>
     <div class="container">        
         <form action="signup_validation.php" method="POST">
-
          <!-- Campos ocultos para conservar los datos del primer formulario -->
          <input type="hidden" name="nombre_usuario" value="<?php echo $_POST['nombre_usuario']; ?>">
             <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
@@ -114,7 +106,6 @@
           <button type="submit">Registrarse</button>
         </form>
       </div>
-
       <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Datos del primer formulario recibidos:";
@@ -122,5 +113,4 @@
     }
     ?>
 </body>
-
 </html>

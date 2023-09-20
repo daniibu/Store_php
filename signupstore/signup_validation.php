@@ -1,11 +1,20 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
     print_r($_POST); // Imprime el contenido de $_POST para depurar
     if (isset($_POST["nombre_usuario"])) {
         $nombre_usuario = $_POST["nombre_usuario"];
         $email = $_POST["email"];
         $password = $_POST["password"];
         $confirm_password = $_POST["confirm_password"];
+     // Comprobar si el registro es realizado por un administrador
+     if (isset($_POST["registration_source"]) && $_POST["registration_source"] === "admin") {
+        // Acciones específicas para registros de administradores aquí, por ejemplo, asignar roles.
+        $role = $_POST["role"]; // Puedes obtener el rol de los datos del formulario.
+    } else {
+        // Acciones para registros de usuarios normales
+        // Aquí puedes aplicar reglas adicionales o asignar roles si es necesario.
+        $role = "user"; // Rol por defecto para usuarios normales.
+    }
     } else {
        // Puedes mostrar un mensaje de error si no se reciben los datos
        echo "Error: Datos del primer formulario no recibidos.";
@@ -49,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Error al insertar el registro
         echo "Error al guardar el registro: " . $conn->error;
     }
-
     // Cerrar la conexión
     $conn->close();
 }

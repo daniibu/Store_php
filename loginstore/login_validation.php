@@ -8,23 +8,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require '../connection/connection_bd.php';
 
     // Verificar si el valor ingresado es un nombre de usuario o un correo electrónico
-    $sql = "SELECT nombre_usuario, email, password FROM store.sign_up WHERE nombre_usuario = ? OR email = ?";
+    $sql = "SELECT nombre_usuario, email, password, rol FROM store.sign_up WHERE nombre_usuario = ? OR email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $usernameOrEmail, $usernameOrEmail);
     $stmt->execute();
     $stmt->store_result(); // Almacena el resultado en el statement
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($nombre_usuario, $email, $hashed_password); // Vincula las columnas a variables
+        $stmt->bind_result($nombre_usuario, $email, $hashed_password,$rol); // Vincula las columnas a variables
         $stmt->fetch(); // Obtiene los valores de las variables
 
         // Verificar si la contraseña ingresada coincide con el hash almacenado en la base de datos
         if (password_verify($password2, $hashed_password)) {
             // Autenticación exitosa, establece la sesión y redirige al usuario
             $_SESSION["logged_in"] = true;
-
-            //$_SESSION["rol"] = $rol; Este es para rol, definir la variable primero, luego la tabla en la base de datos
-            header("Location: dashboard.php"); // Cambia esto a la página que desees redirigir después del inicio de sesión exitoso
+            if ($rol == 2) {
+                header("Location: user_dashboard.php");
+            } elseif ($rol == 1) {
+                header("Location: ../adminstore/admin_dashboard.php");
+            }
             exit;
         } else {
             // Autenticación fallida, muestra un mensaje de error
