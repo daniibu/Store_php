@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <table class="table table-bordered table-striped">
                             <thead>
-                                <a href="user_create.php" class="btn btn-primary float-end">Agregar Admin</a>
+                                <a href="admin_create.php" class="btn btn-primary float-end">Agregar Admin</a>
                                 <tr>
                                     <th>id_user</th>
                                     <th>nombre_usuario</th>

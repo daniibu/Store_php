@@ -7,14 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = $_POST["password"];
         $confirm_password = $_POST["confirm_password"];
      // Comprobar si el registro es realizado por un administrador
-     if (isset($_POST["registration_source"]) && $_POST["registration_source"] === "admin") {
+    if (isset($_POST["registration_source"]) && $_POST["registration_source"] === "admin") {
         // Acciones específicas para registros de administradores aquí, por ejemplo, asignar roles.
-        $role = $_POST["role"]; // Puedes obtener el rol de los datos del formulario.
+        $rol = $_POST["role"]; // Puedes obtener el rol de los datos del formulario.
     } else {
-        // Acciones para registros de usuarios normales
-        // Aquí puedes aplicar reglas adicionales o asignar roles si es necesario.
-        $role = "user"; // Rol por defecto para usuarios normales.
+        // Asignamos el rol 2 a los usuarios comunes
+        $rol = 2;
     }
+
     } else {
        // Puedes mostrar un mensaje de error si no se reciben los datos
        echo "Error: Datos del primer formulario no recibidos.";
@@ -29,12 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $fecha_nacimiento = $_POST["fecha_nacimiento"];
             $provincia = $_POST["provincia"];
             $departamento = $_POST["departamento"];
+
         } else {
            // Mostrar un mensaje de error si no se reciben los datos del segundo formulario
            echo "Error: Datos del segundo formulario no recibidos.";
            exit;
         }
-        
     }
     // Generar el hash de la contraseña
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -47,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Preparar la consulta SQL para insertar los datos en la tabla de usuarios
-    $sql = "INSERT INTO sign_up (nombre_usuario,email,password,confirm_password,nombre,apellido,dni,genero,fecha_nacimiento,provincia,departamento) 
-            VALUES ('$nombre_usuario','$email','$hashed_password','$confirm_password','$nombre','$apellido','$dni','$genero','$fecha_nacimiento','$provincia','$departamento')";
+    $sql = "INSERT INTO sign_up (nombre_usuario,email,password,confirm_password,nombre,apellido,dni,genero,fecha_nacimiento,provincia,departamento,rol) 
+            VALUES ('$nombre_usuario','$email','$hashed_password','$confirm_password','$nombre','$apellido','$dni','$genero','$fecha_nacimiento','$provincia','$departamento','$rol')";
 
     // Ejecutar la consulta
     if ($conn->query($sql) === TRUE) {
@@ -61,4 +61,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // Cerrar la conexión
     $conn->close();
 }
+
 ?>

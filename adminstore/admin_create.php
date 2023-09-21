@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <title>User Create</title>
 </head>
 <body>
@@ -16,7 +15,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>AGREGAR USUARIO
+                        <h4>AGREGAR NUEVO ADMINISTRADOR
                             <a href="admin_dashboard.php" class="btn btn-danger float-end">BACK</a>
                         </h4>
                     </div>
@@ -24,50 +23,49 @@
                         <form action="" method="POST">
                             <input type="hidden" name="registration_source" value="admin">
                             <div class="mb-3">
-                                <label for="username">Nombre de usuario</label>
+                                <label for="username">nombre_usuario</label>
                                 <input type="text" name="username" class="form-control" id="username">
                             </div>
                             <div class="mb-3">
-                                <label for="email">Correo electrónico</label>
+                                <label for="email">email</label>
                                 <input type="email" name="email" class="form-control" id="email">
                             </div>
                             <div class="mb-3">
-                                <label for="password">Contraseña</label>
+                                <label for="password">password</label>
                                 <input type="password" name="password" class="form-control" id="password">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">Nombre Usuario</label>
+                                <label for="nombre">nombre</label>
                                 <input type="text" name="name" class="form-control" id="nombre">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">Apellido Usuario</label>
+                                <label for="nombre">apellido</label>
                                 <input type="text" name="apellido" class="form-control" id="apellido">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">DNI Usuario</label>
+                                <label for="nombre">dni</label>
                                 <input type="text" name="name" class="form-control" id="dni">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">genero Usuario</label>
+                                <label for="nombre">genero</label>
                                 <input type="text" name="name" class="form-control" id="genero">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">Fecha de nacimineto</label>
+                                <label for="nombre">fecha_nacimiento</label>
                                 <input type="text" name="name" class="form-control" id="fecha_nacimiento">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">provincia Usuario</label>
+                                <label for="nombre">provincia</label>
                                 <input type="text" name="name" class="form-control" id="provincia">
                             </div>
                             <div class="mb-3">
-                                <label for="nombre">departamento Usuario</label>
+                                <label for="nombre">departamento</label>
                                 <input type="text" name="name" class="form-control" id="departamento">
                             </div>
                             <div class="mb-3">
-                                <label for="role">Rol</label>
+                                <label for="role">rol</label>
                                 <select name="role" class="form-select" id="role">
                                     <option value="admin">Admin</option>
-                                    <option value="user">Usuario</option>
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -79,7 +77,6 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
